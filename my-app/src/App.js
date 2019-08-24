@@ -4,7 +4,6 @@ import './App.css';
 
 // components
 import Navigation from './components/Navigation';
-import Leaderboard from './components/Leaderboards';
 import AddJoke from './components/AddJoke';
 import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
@@ -14,11 +13,11 @@ function App() {
     <Router>
       <div className="App">
         <Route path='/' component={Navigation} />
-        <Route exact path='/' component={Leaderboard} />
         <Route path='/addjoke' component={AddJoke} />
         <Route path='/signin' component={SignIn} />
         <Route path='/signup' component={SignUp} />
       </div>
+      <div className='home-page-title'>Public Jokes</div>
     </Router>
   );
 }
