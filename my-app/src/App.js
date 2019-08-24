@@ -14,7 +14,7 @@ function App() {
     <Router>
       <div className="App">
         <Route path='/' component={Navigation} />
-        <Route path='/' component={Leaderboard} />
+        <Route exact path='/' component={Leaderboard} />
         <Route path='/addjoke' component={AddJoke} />
         <Route path='/signin' component={SignIn} />
         <Route path='/signup' component={SignUp} />
