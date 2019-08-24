@@ -23,9 +23,6 @@ const AddJoke = () => {
             console.log(error);
           });
       })
-      .catch(error => {
-        console.log(error);
-      });
   };
   useEffect(() => {
     console.log(newJoke);
