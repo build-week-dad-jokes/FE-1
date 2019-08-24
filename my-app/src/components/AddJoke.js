@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 const AddJoke = () => {
 
@@ -11,12 +12,20 @@ const AddJoke = () => {
   };
   const handleSubmit = e => {
     e.preventDefault();
-    if(newJoke.checkbox_both === "on") {
-      setNewJoke({...newJoke, checkbox_public: "on", checkbox_private: "on"});
-    };
-    if(newJoke.checkbox_public === "on" && newJoke.checkbox_private === "on") {
-      setNewJoke({...newJoke, checkbox_both: "on"});
-    };
+    axios.post('https://5d6175f45f6487001406047a.mockapi.io/api/v1/joke', newJoke)
+      .then(response => {
+        console.log(response);
+        axios.get('https://5d6175f45f6487001406047a.mockapi.io/api/v1/joke')
+          .then(response => {
+            console.log(response);
+          })
+          .catch(error => {
+            console.log(error);
+          });
+      })
+      .catch(error => {
+        console.log(error);
+      });
   };
   useEffect(() => {
     console.log(newJoke);

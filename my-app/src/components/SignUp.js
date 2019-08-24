@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
 const SignUp = () => {
 
@@ -13,6 +14,13 @@ const SignUp = () => {
     e.preventDefault();
     if(newUser.password === newUser.confirm) {
       console.log(newUser);
+      axios.post('https://5d6175f45f6487001406047a.mockapi.io/api/v1/user', newUser)
+        .then(response => {
+          console.log(response);
+        })
+        .catch(error => {
+          console.log(error);
+        });
     }else {
       alert('Passwords must match.');
     };
