@@ -16,8 +16,9 @@ function App() {
         <Route path='/addjoke' component={AddJoke} />
         <Route path='/signin' component={SignIn} />
         <Route path='/signup' component={SignUp} />
+        <div>Public Jokes</div>
       </div>
-      <div className='home-page-title'>Public Jokes</div>
+
     </Router>
   );
 }
