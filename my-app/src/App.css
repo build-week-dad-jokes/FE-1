@@ -3,3 +3,57 @@
   width: 500px;
   margin: auto;
 }
+
+nav {
+  margin-top: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+header {
+  width: 350px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+input {
+  padding: 4px 8px;
+  border: 1.4px solid lightgray;
+  border-radius: 4px;
+}
+
+input:focus {
+  border: 1.4px solid purple;
+}
+
+.navlink {
+  font-size: .8rem;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+.title {
+  color: gray;
+  font-size: 1.2rem;
+}
+
+.navJoke {
+  color: white;
+  background-color: purple;
+  padding: 5px 8px;
+}
+
+.navSignIn {
+  color: purple;
+  border: 1.4px solid fuchsia;
+  padding: 4px 8px;
+}
+
+.navSignIn:hover {
+  color: white;
+  background-color: fuchsia;
+}
