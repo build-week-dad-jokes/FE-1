@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-const SignIn = () => {
+const SignIn = (props) => {
 
   // hooks
   const [user, setUser] = useState({});
@@ -16,19 +16,21 @@ const SignIn = () => {
   };
 
   return(
-    <form onSubmit={e => handleSubmit(e)}>
-      <h2>Welcome back</h2>
-      <input type='text' placeholder='username or email' name='username' onChange={e => handleChanges(e)} />
-      <br />
-      <br />
-      <input type='password' placeholder='password' name='password' onChange={e => handleChanges(e)} />
-      <br />
-      <br />
-      <button>sign in</button>
-      <br />
-      <br />
-      <div>Don't have an account?<Link to='/signup'>Sign up now</Link></div>
-    </form>
+    <>
+      <form onSubmit={e => handleSubmit(e)}>
+        <h2>Welcome back</h2>
+        <input type='text' placeholder='username or email' name='username' onChange={e => handleChanges(e)} />
+        <br />
+        <br />
+        <input type='password' placeholder='password' name='password' onChange={e => handleChanges(e)} />
+        <br />
+        <br />
+        <button>sign in</button>
+        <br />
+        <br />
+        <div>Don't have an account?<Link to='/signup'>Sign up now</Link></div>
+      </form>
+    </>
   )
 }
 
