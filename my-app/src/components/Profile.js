@@ -16,17 +16,18 @@ const Profile = (props) => {
       });
   }, []);
 
-  const handleEdit = () => {
+  const handleEdit = joke => {
+    localStorage.setItem('jokeId', joke.id);
     props.history.push('./addjoke');
   };
 
   return (
     <>
-      {joke.map(user => (
-        <div key={user.id}>
-          <div>{user.setup}</div>
-          <div>{user.punchline}</div>
-          <button onClick={handleEdit}>edit</button>
+      {joke.map(joke => (
+        <div key={joke.id}>
+          <div>{joke.setup}</div>
+          <div>{joke.punchline}</div>
+          <button onClick={() => handleEdit(joke)}>edit</button>
           <br />
         </div>
       ))}
