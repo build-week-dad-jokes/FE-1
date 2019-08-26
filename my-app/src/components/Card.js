@@ -6,33 +6,31 @@ function Card(props) {
   const [downVotes, setDownvotes] = useState(0);
   const [joke, setJoke] = useState(props.joke);
 
+  function upVote(e) {
+    //need way to save state on refresh and limit votes to 1 per user
+
+    e.preventDefault();
+    setUpvotes(upVotes + 1);
+  }
+
+  function downVote(e) {
+    //need way to save state on refresh and limit votes to 1 per user
+    e.preventDefault();
+    setDownvotes(downVotes + 1);
+  }
+
   return (
     //Semantic UI 'Card' imported as 'Joke'
-    <Joke key={joke.id}>
+    <Joke key={props.key} props>
       <Joke.Content>
         <Joke.Description>
-          #{joke.id}
-          <span>{joke.author}</span>
-        </Joke.Description>
-        <Joke.Description>{joke.setup}</Joke.Description>
-        <Joke.Description>{joke.punchline}</Joke.Description>
-        <Joke.Description>
-          <span>
-            <Icon
-              name="arrow up"
-              size="big"
-              onClick={() => setUpvotes(upVotes + 1)}
-            />{" "}
-            +{upVotes}
-          </span>
-          <span>
-            <Icon
-              name="arrow down"
-              size="big"
-              onClick={() => setDownvotes(downVotes + 1)}
-            />
-            -{downVotes}
-          </span>
+          <p>#{joke.id}</p>
+          <p>{joke.setup}</p>
+          <p>{joke.punchline}</p>
+          <p>
+            <span><Icon name="arrow up" size="big" onClick={e => upVote(e)} />+{upVotes}</span>
+            <span><Icon name="arrow down" size="big" onClick={e => downVote(e)} />-{downVotes}</span>
+          </p>
         </Joke.Description>
       </Joke.Content>
     </Joke>

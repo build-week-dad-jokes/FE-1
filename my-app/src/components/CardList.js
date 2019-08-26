@@ -15,18 +15,16 @@ const CardList = () => {
       });
   }, []);
 
-  const jokeKeys = Object.keys(jokes);
-
   return (
-    <div className="cards">
-      {jokeKeys.map(key => {
+    <>
+      {jokes.map(joke => {
         return (
-          <div className="card-container">
-            <Card joke={jokes[key]} />
+          <div key={joke.id}>
+            <Card joke={joke} />
           </div>
         );
       })}
-    </div>
+    </>
   );
 };
 
