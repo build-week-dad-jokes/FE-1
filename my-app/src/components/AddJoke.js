@@ -33,6 +33,7 @@ const AddJoke = (props) => {
             console.log(error);
           });
       })
+    window.location.href='./profile';
   };
 
   useEffect(() => {
@@ -63,7 +64,7 @@ const AddJoke = (props) => {
       .catch(error => {
         console.log('post error', error.response);
       });
-      window.location.href='./profile';
+    window.location.href='./profile';
   };
 
   const handleCancel = e => {
