@@ -16,15 +16,15 @@ const CardList = () => {
   }, []);
 
   return (
-    <>
+    <div className="cardList">
       {jokes.map(joke => {
         return (
-          <div key={joke.id}>
+          <div className="jokeCard" key={joke.id}>
             <Card joke={joke} />
           </div>
         );
       })}
-    </>
+    </div>
   );
 };
 

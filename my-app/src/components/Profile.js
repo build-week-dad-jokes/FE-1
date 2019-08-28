@@ -34,19 +34,20 @@ const Profile = (props) => {
   }
 
   return (
-    <>
+    <div className="box">
       {joke.map(joke => (
-        <div key={joke.id}>
+        <div className="editDelete" key={joke.id}>
           <div>{joke.setup}</div>
           <div>{joke.punchline}</div>
           <div>public: {joke.checkbox_public ? 'true' : 'false'}</div>
           <div>private: {joke.checkbox_private ? 'true' : 'false'}</div>
-          <button onClick={() => handleEdit(joke)}>edit</button>
-          <button onClick={() => handleDelete(joke)}>delete</button>
-          <br />
+          <div className="editButtons">
+            <button onClick={() => handleEdit(joke)}>edit</button>
+            <button onClick={() => handleDelete(joke)}>delete</button>
+          </div>
         </div>
       ))}
-    </>
+    </div>
   )
 }
 
