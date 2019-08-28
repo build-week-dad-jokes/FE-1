@@ -16,7 +16,7 @@ const SignIn = (props) => {
   };
 
   return(
-    <form onSubmit={e => handleSubmit(e)}>
+    <form className="signInDiv" onSubmit={e => handleSubmit(e)}>
       <h2>Welcome back</h2>
       <input className="default" type='text' placeholder='username or email' name='username' onChange={e => handleChanges(e)} />
       <br />
@@ -27,7 +27,7 @@ const SignIn = (props) => {
       <button>sign in</button>
       <br />
       <br />
-      <div>Don't have an account? <Link to='/signup'>Sign up now</Link></div>
+      <div>Don't have an account? <Link className="linkSignUp" to='/signup'>Sign up now</Link></div>
     </form>
   )
 }

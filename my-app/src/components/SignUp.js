@@ -27,7 +27,7 @@ const SignUp = () => {
   };
 
   return (
-    <form onSubmit={e => handleSubmit(e)}>
+    <form className="signUpDiv" onSubmit={e => handleSubmit(e)}>
       <h2>Create new account</h2>
       <input className="default" type='text' placeholder='username' name='username' onChange={e => handleChanges(e)} />
       <br />

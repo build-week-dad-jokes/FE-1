@@ -75,29 +75,34 @@ const AddJoke = (props) => {
   return (
     <form className="addJokeForm" onSubmit={e => handleSubmit(e)}>
       <h3>Create a joke</h3>
-      <div>Set up</div>
-      <textarea rows='4' cols='30' name='setup' value={setUpValue} onChange={e => handleChanges(e)} />
-      <br />
-      <div>Punchline</div>
-      <textarea rows='4' cols='30' name='punchline' value={punchlineValue} onChange={e => handleChanges(e)} />
-      <br />
-      <br />
-      <label className="container"><span className="checkmark"></span> public
-        <input className="checkbox" type='checkbox' name='checkbox_public' onChange={e => handleChanges(e)} />
-      </label>
-      <label className="container"><span className="checkmark"></span> private
-        <input className="checkbox" type='checkbox' name='checkbox_private' onChange={e => handleChanges(e)} />
-      </label>
-      <label className="container"><span className="checkmark"></span> both
-        <input className="checkbox" type='checkbox' name='checkbox_both' onChange={e => handleChanges(e)} />
-      </label>
+      <div className="textAreaDiv">
+        <div>Set up</div>
+        <textarea rows='4' cols='30' name='setup' value={setUpValue} onChange={e => handleChanges(e)} />
+        <div>Punchline</div>
+        <textarea rows='4' cols='30' name='punchline' value={punchlineValue} onChange={e => handleChanges(e)} />
+      </div>
       <br />
       <br />
-      <button onClick={e => handleCancel(e)}>cancel</button>
-      {id === null ?
-        <button onClick={e => handleSubmit(e)} >save</button> :
-        <button onClick={e => handleEdit(e)}>edit</button>
-      }
+      <div className="labelDiv">
+        <label className="container"> public
+          <input className="checkbox" type='checkbox' name='checkbox_public' onChange={e => handleChanges(e)} />
+        </label>
+        <label className="container"> private
+          <input className="checkbox" type='checkbox' name='checkbox_private' onChange={e => handleChanges(e)} />
+        </label>
+        <label className="container"> both
+          <input className="checkbox" type='checkbox' name='checkbox_both' onChange={e => handleChanges(e)} />
+        </label>
+      </div>
+      <br />
+      <br />
+      <div className="buttonsDiv">
+        <button onClick={e => handleCancel(e)}>cancel</button>
+        {id === null ?
+          <button onClick={e => handleSubmit(e)} >save</button> :
+          <button onClick={e => handleEdit(e)}>edit</button>
+        }
+      </div>
     </form>
   )
 }
