@@ -4,6 +4,50 @@
   margin: auto;
 }
 
+/* input styling */
+
+.default {
+  padding: 4px 8px;
+  border: 1.4px solid lightgray;
+  border-radius: 4px;
+}
+
+.default:focus {
+  border: 1.4px solid purple;
+  outline: none;
+}
+
+/* textarea styling */
+
+textarea {
+  border: 1.4px solid lightgray;
+  border-radius: 4px;
+}
+
+textarea:focus {
+  border: 1.4px solid purple;
+  outline: none;
+}
+
+/* button styling */
+
+button {
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  background-color: fuchsia;
+  padding: 3px 8px;
+  border: 1.4px solid fuchsia;
+  border-radius: 4px;
+}
+
+button:hover {
+  color: fuchsia;
+  background-color: white;
+}
+
+/* navbar styling */
+
 nav {
   margin-top: 10px;
   width: 100%;
@@ -17,16 +61,6 @@ header {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-}
-
-input {
-  padding: 4px 8px;
-  border: 1.4px solid lightgray;
-  border-radius: 4px;
-}
-
-input:focus {
-  border: 1.4px solid purple;
 }
 
 .navlink {
@@ -47,8 +81,15 @@ input:focus {
   padding: 5px 8px;
 }
 
-.navSignIn {
+.navJoke:hover {
   color: purple;
+  background-color: white;
+  border: 1.4px solid purple;
+  padding: 3.6px 6.6px;
+}
+
+.navSignIn {
+  color: fuchsia;
   border: 1.4px solid fuchsia;
   padding: 4px 8px;
 }
@@ -56,4 +97,12 @@ input:focus {
 .navSignIn:hover {
   color: white;
   background-color: fuchsia;
+}
+
+/* checkmark styling */
+
+.container {
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
 }

@@ -23,7 +23,7 @@ const AddJoke = () => {
   }, [newJoke]);
 
   return (
-    <form onSubmit={e => handleSubmit(e)}>
+    <form className="addJokeForm" onSubmit={e => handleSubmit(e)}>
       <h3>Create a joke</h3>
       <div>Set up</div>
       <textarea rows='4' cols='30' name='setup' onChange={e => handleChanges(e)} />
@@ -32,9 +32,15 @@ const AddJoke = () => {
       <textarea rows='4' cols='30' name='punchline' onChange={e => handleChanges(e)} />
       <br />
       <br />
-      <input type='checkbox' name='checkbox_public' onChange={e => handleChanges(e)} /><span>public</span>
-      <input type='checkbox' name='checkbox_private' onChange={e => handleChanges(e)} /><span>private</span>
-      <input type='checkbox' name='checkbox_both' onChange={e => handleChanges(e)} /><span>both</span>
+      <label className="container"><span className="checkmark"></span> public
+        <input className="checkbox" type='checkbox' name='checkbox_public' onChange={e => handleChanges(e)} />
+      </label>
+      <label className="container"><span className="checkmark"></span> private
+        <input className="checkbox" type='checkbox' name='checkbox_private' onChange={e => handleChanges(e)} />
+      </label>
+      <label className="container"><span className="checkmark"></span> both
+        <input className="checkbox" type='checkbox' name='checkbox_both' onChange={e => handleChanges(e)} />
+      </label>
       <br />
       <br />
       <button>cancel</button>

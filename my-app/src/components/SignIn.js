@@ -18,16 +18,16 @@ const SignIn = () => {
   return(
     <form onSubmit={e => handleSubmit(e)}>
       <h2>Welcome back</h2>
-      <input type='text' placeholder='username or email' name='username' onChange={e => handleChanges(e)} />
+      <input className="default" type='text' placeholder='username or email' name='username' onChange={e => handleChanges(e)} />
       <br />
       <br />
-      <input type='password' placeholder='password' name='password' onChange={e => handleChanges(e)} />
+      <input className="default" type='password' placeholder='password' name='password' onChange={e => handleChanges(e)} />
       <br />
       <br />
       <button>sign in</button>
       <br />
       <br />
-      <div>Don't have an account?<Link to='/signup'>Sign up now</Link></div>
+      <div>Don't have an account? <Link to='/signup'>Sign up now</Link></div>
     </form>
   )
 }

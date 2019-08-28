@@ -21,16 +21,16 @@ const SignUp = () => {
   return (
     <form onSubmit={e => handleSubmit(e)}>
       <h2>Create new account</h2>
-      <input type='text' placeholder='username' name='username' onChange={e => handleChanges(e)} />
+      <input className="default" type='text' placeholder='username' name='username' onChange={e => handleChanges(e)} />
       <br />
       <br />
-      <input type='email' placeholder='email' name='email' onChange={e => handleChanges(e)} />
+      <input className="default" type='email' placeholder='email' name='email' onChange={e => handleChanges(e)} />
       <br />
       <br />
-      <input type='password' placeholder='password' name='password' onChange={e => handleChanges(e)} />
+      <input className="default" type='password' placeholder='password' name='password' onChange={e => handleChanges(e)} />
       <br />
       <br />
-      <input type='password' placeholder='confirm password' name='confirm' onChange={e => handleChanges(e)} />
+      <input className="default" type='password' placeholder='confirm password' name='confirm' onChange={e => handleChanges(e)} />
       <br />
       <br />
       <button>accept and submit</button>
