@@ -22,23 +22,23 @@ const AddJoke = (props) => {
   };
   const handleSubmit = e => {
     e.preventDefault();
-    axios.post('https://5d6175f45f6487001406047a.mockapi.io/api/v1/joke', newJoke)
+    axios.post('https://dadjokes-be.herokuapp.com/api/jokes', {setup: 'test1', punchline: 'test2'})
       .then(response => {
         console.log(response);
-        axios.get('https://5d6175f45f6487001406047a.mockapi.io/api/v1/joke')
+        axios.get('https://dadjokes-be.herokuapp.com/api/jokes')
           .then(response => {
             console.log(response);
           })
           .catch(error => {
-            console.log(error);
+            console.log(error.response);
           });
       })
-    window.location.href='./profile';
+
   };
 
   useEffect(() => {
     if(id !== null) {
-    axios.get('https://5d6175f45f6487001406047a.mockapi.io/api/v1/joke')
+    axios.get('https://dadjokes-be.herokuapp.com/api/jokes')
       .then(response => {
         const jokeInArr = response.data.find(joke => `${joke.id}` === id);
         setSetUpValue(jokeInArr.setup);
@@ -57,7 +57,7 @@ const AddJoke = (props) => {
 
   const handleEdit = e => {
     e.preventDefault();
-    axios.put(`https://5d6175f45f6487001406047a.mockapi.io/api/v1/joke/${placeHolderId}`, newJoke)
+    axios.put(`https://dadjokes-be.herokuapp.com/api/jokes/${placeHolderId}`, newJoke)
       .then(response => {
         console.log('post', response);
       })

@@ -24,9 +24,9 @@ function Card(props) {
     <Joke key={props.key} props>
       <Joke.Content>
         <Joke.Description>
-          <p>#{joke.id}</p>
-          <p>{joke.setup}</p>
-          <p>{joke.punchline}</p>
+          <p className='p1'>#{joke.id}</p>
+          <p className='p2'>{joke.setup}</p>
+          <p className='p3'>{joke.punchline}</p>
           <p>
             <span><Icon name="arrow up" size="big" onClick={e => upVote(e)} />+{upVotes}</span>
             <span><Icon name="arrow down" size="big" onClick={e => downVote(e)} />-{downVotes}</span>

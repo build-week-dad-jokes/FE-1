@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+
+import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 const Profile = (props) => {
 
   const [joke, setJoke] = useState([]);
 
   useEffect(() => {
-    axios.get(`https://5d6175f45f6487001406047a.mockapi.io/api/v1/joke`)
+    axiosWithAuth().get(`https://5d6175f45f6487001406047a.mockapi.io/api/v1/joke`)
       .then(response => {
         console.log(response.data);
         setJoke(response.data);
@@ -22,7 +23,7 @@ const Profile = (props) => {
   };
 
   const handleDelete = joke => {
-    axios
+    axiosWithAuth()
       .delete(`https://5d6175f45f6487001406047a.mockapi.io/api/v1/joke/${joke.id}`)
         .then(response => {
           console.log(response);
