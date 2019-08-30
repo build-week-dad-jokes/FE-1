@@ -33,7 +33,7 @@ const Navigation = () => {
           {localStorage.getItem('token') ? <Link className="navlink navSignIn" to='/profile'>profile</Link> : <Link className="navlink navSignIn" exact to='/signin'>sign in</Link>}
         </header>
       </nav>
-      <Route exact path="/" component={CardList} />
+      { window.location.pathname === '/' ? <CardList /> : null }
     </>
   )
 }

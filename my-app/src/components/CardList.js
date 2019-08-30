@@ -6,8 +6,9 @@ const CardList = () => {
   const [jokes, setJokes] = useState([]);
   useEffect(() => {
     axios
-      .get(`https://5d6175f45f6487001406047a.mockapi.io/api/v1/joke`)
+      .get(`https://dadjokes-be.herokuapp.com/api/jokes`)
       .then(response => {
+        console.log(response);
         setJokes(response.data);
       })
       .catch(error => {

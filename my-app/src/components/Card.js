@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from 'axios';
 import { Card as Joke, Icon } from "semantic-ui-react";
 
 function Card(props) {
@@ -11,12 +12,26 @@ function Card(props) {
 
     e.preventDefault();
     setUpvotes(upVotes + 1);
-  }
+    axios.put(`https://dadjokes-be.herokuapp.com/api/jokes/updatebyid/${joke.id}`, {upvote: upVotes})
+      .then(response => {
+        console.log(response);
+      })
+      .catch(error => {
+        console.log(error.response);
+      });
+  };
 
   function downVote(e) {
     //need way to save state on refresh and limit votes to 1 per user
     e.preventDefault();
     setDownvotes(downVotes + 1);
+    axios.put(`https://dadjokes-be.herokuapp.com/api/jokes/updatebyid/${joke.id}`, {upvote: downVotes})
+      .then(response => {
+        console.log(response);
+      })
+      .catch(error => {
+        console.log(error.response);
+      });
   }
 
   return (

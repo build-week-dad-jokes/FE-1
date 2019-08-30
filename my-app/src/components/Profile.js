@@ -9,7 +9,7 @@ const Profile = (props) => {
   useEffect(() => {
     axiosWithAuth().get('https://dadjokes-be.herokuapp.com/api/jokes')
       .then(response => {
-        console.log(response.data);
+        console.log(response.data.filter(item => item.private === 1));
         setJoke(response.data);
       })
       .catch(error => {
@@ -27,28 +27,36 @@ const Profile = (props) => {
       .delete(`https://dadjokes-be.herokuapp.com/api/jokes/delete/${joke.id}`)
         .then(response => {
           console.log(response);
-          window.location.href='./profile';    
+          window.location.href='./profile';
         })
         .catch(error => {
           console.log(error);
         });
   }
 
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    window.location.reload();
+  }
+
   return (
-    <div className="box">
-      {joke.map(joke => (
-        <div className="editDelete" key={joke.id}>
-          <div>{joke.setup}</div>
-          <div>{joke.punchline}</div>
-          <div>public: {joke.checkbox_public ? 'true' : 'false'}</div>
-          <div>private: {joke.checkbox_private ? 'true' : 'false'}</div>
-          <div className="editButtons">
-            <button onClick={() => handleEdit(joke)}>edit</button>
-            <button onClick={() => handleDelete(joke)}>delete</button>
+    <>
+      <button onClick={e => handleLogout(e)}>logout</button>
+      <div className="box">
+        {joke.map(joke => (
+          <div className="editDelete" key={joke.id}>
+            <div>{joke.setup}</div>
+            <div>{joke.punchline}</div>
+            <div>public: {joke.checkbox_public ? 'true' : 'false'}</div>
+            <div>private: {joke.checkbox_private ? 'true' : 'false'}</div>
+            <div className="editButtons">
+              <button onClick={() => handleEdit(joke)}>edit</button>
+              <button onClick={() => handleDelete(joke)}>delete</button>
+            </div>
           </div>
-        </div>
-      ))}
-    </div>
+        ))}
+      </div>
+    </>
   )
 }
 

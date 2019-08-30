@@ -22,7 +22,10 @@ const AddJoke = (props) => {
   };
   const handleSubmit = e => {
     e.preventDefault();
-    axios.post('https://dadjokes-be.herokuapp.com/api/jokes/addjoke', {setup: newJoke.setup, punchline: newJoke.punchline})
+    if(e.target.checkbox_both === "on") {e.target.checkbox_public = true; e.target.checkbox_private = true};
+    if(e.target.checkbox_public === "on") {e.target.checkbox_public = true};
+    if(e.target.checkbox_private === "on") {e.target.checkbox_private = true};
+    axios.post('https://dadjokes-be.herokuapp.com/api/jokes/addjoke', {setup: newJoke.setup, punchline: newJoke.punchline, public: 1, private: 1 })
       .then(response => {
         console.log(response);
         axios.get('https://dadjokes-be.herokuapp.com/api/jokes')
@@ -77,9 +80,9 @@ const AddJoke = (props) => {
       <h3>Create a joke</h3>
       <div className="textAreaDiv">
         <div>Set up</div>
-        <textarea rows='4' cols='30' name='setup' value={setUpValue} onChange={e => handleChanges(e)} />
+        <textarea maxlength="100" rows='4' cols='30' name='setup' placeholder='Enter the setup of your joke. Must be 100 characters or less.' value={setUpValue} onChange={e => handleChanges(e)} />
         <div>Punchline</div>
-        <textarea rows='4' cols='30' name='punchline' value={punchlineValue} onChange={e => handleChanges(e)} />
+        <textarea maxlength="100" rows='4' cols='30' name='punchline' placeholder='Enter the punchline of your joke. Must be 100 characters or less.' value={punchlineValue} onChange={e => handleChanges(e)} />
       </div>
       <br />
       <br />
