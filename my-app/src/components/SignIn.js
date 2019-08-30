@@ -17,7 +17,7 @@ const SignIn = (props) => {
       .then(response => {
         console.log(response);
         localStorage.setItem('token', response.data.token);
-        props.history.push('/profile');
+        window.location.href='./profile';
       })
       .catch(error => {
         console.log(error);

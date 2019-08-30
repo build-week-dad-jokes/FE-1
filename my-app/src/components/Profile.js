@@ -7,7 +7,7 @@ const Profile = (props) => {
   const [joke, setJoke] = useState([]);
 
   useEffect(() => {
-    axiosWithAuth().get(`https://5d6175f45f6487001406047a.mockapi.io/api/v1/joke`)
+    axiosWithAuth().get('https://dadjokes-be.herokuapp.com/api/jokes')
       .then(response => {
         console.log(response.data);
         setJoke(response.data);
@@ -24,14 +24,14 @@ const Profile = (props) => {
 
   const handleDelete = joke => {
     axiosWithAuth()
-      .delete(`https://5d6175f45f6487001406047a.mockapi.io/api/v1/joke/${joke.id}`)
+      .delete(`https://dadjokes-be.herokuapp.com/api/jokes/delete/${joke.id}`)
         .then(response => {
           console.log(response);
+          window.location.href='./profile';    
         })
         .catch(error => {
           console.log(error);
         });
-    document.location.reload(true);
   }
 
   return (

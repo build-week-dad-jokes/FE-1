@@ -22,18 +22,18 @@ const AddJoke = (props) => {
   };
   const handleSubmit = e => {
     e.preventDefault();
-    axios.post('https://dadjokes-be.herokuapp.com/api/jokes', {setup: 'test1', punchline: 'test2'})
+    axios.post('https://dadjokes-be.herokuapp.com/api/jokes/addjoke', {setup: newJoke.setup, punchline: newJoke.punchline})
       .then(response => {
         console.log(response);
         axios.get('https://dadjokes-be.herokuapp.com/api/jokes')
           .then(response => {
             console.log(response);
+            window.location.href='./profile';
           })
           .catch(error => {
             console.log(error.response);
           });
       })
-
   };
 
   useEffect(() => {
@@ -57,14 +57,14 @@ const AddJoke = (props) => {
 
   const handleEdit = e => {
     e.preventDefault();
-    axios.put(`https://dadjokes-be.herokuapp.com/api/jokes/${placeHolderId}`, newJoke)
+    axios.put(`https://dadjokes-be.herokuapp.com/api/jokes/updatebyid/${placeHolderId}`, newJoke)
       .then(response => {
         console.log('post', response);
+        window.location.href='./profile';
       })
       .catch(error => {
         console.log('post error', error.response);
       });
-    window.location.href='./profile';
   };
 
   const handleCancel = e => {

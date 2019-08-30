@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Card as Joke, Icon } from "semantic-ui-react";
 
 function Card(props) {

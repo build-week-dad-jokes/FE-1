@@ -18,7 +18,7 @@ function App() {
         <Route path="/addjoke" component={AddJoke} />
         <Route path="/signin" component={SignIn} />
         <Route path="/signup" component={SignUp} />
-        <PrivateRoute path="/profile" component={Profile} />
+        <PrivateRoute exact path="/profile" component={Profile} />
       </div>
     </Router>
   );

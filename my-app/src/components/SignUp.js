@@ -17,7 +17,7 @@ const SignUp = () => {
       axios.post('https://dadjokes-be.herokuapp.com/api/auth/register', {username: newUser.username, password: newUser.password})
         .then(response => {
           console.log(response);
-          window.location.href='./signin';
+          
         })
         .catch(error => {
           console.log(error);
