@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import axios from 'axios';
 import { Card as Joke, Icon } from "semantic-ui-react";
 
 function Card(props) {
@@ -11,12 +12,26 @@ function Card(props) {
 
     e.preventDefault();
     setUpvotes(upVotes + 1);
-  }
+    axios.put(`https://dadjokes-be.herokuapp.com/api/jokes/updatebyid/${joke.id}`, {upvote: upVotes})
+      .then(response => {
+        console.log(response);
+      })
+      .catch(error => {
+        console.log(error.response);
+      });
+  };
 
   function downVote(e) {
     //need way to save state on refresh and limit votes to 1 per user
     e.preventDefault();
     setDownvotes(downVotes + 1);
+    axios.put(`https://dadjokes-be.herokuapp.com/api/jokes/updatebyid/${joke.id}`, {upvote: downVotes})
+      .then(response => {
+        console.log(response);
+      })
+      .catch(error => {
+        console.log(error.response);
+      });
   }
 
   return (
@@ -24,9 +39,9 @@ function Card(props) {
     <Joke key={props.key} props>
       <Joke.Content>
         <Joke.Description>
-          <p>#{joke.id}</p>
-          <p>{joke.setup}</p>
-          <p>{joke.punchline}</p>
+          <p className='p1'>#{joke.id}</p>
+          <p className='p2'>{joke.setup}</p>
+          <p className='p3'>{joke.punchline}</p>
           <p>
             <span><Icon name="arrow up" size="big" onClick={e => upVote(e)} />+{upVotes}</span>
             <span><Icon name="arrow down" size="big" onClick={e => downVote(e)} />-{downVotes}</span>

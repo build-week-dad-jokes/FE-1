@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 const SignIn = (props) => {
 
@@ -12,7 +13,15 @@ const SignIn = (props) => {
   };
   const handleSubmit = e => {
     e.preventDefault();
-    console.log(user);
+    axios.post('https://dadjokes-be.herokuapp.com/api/auth/login', user)
+      .then(response => {
+        console.log(response);
+        localStorage.setItem('token', response.data.token);
+        window.location.href='./profile';
+      })
+      .catch(error => {
+        console.log(error);
+      })
   };
 
   return(

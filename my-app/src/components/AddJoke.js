@@ -22,23 +22,26 @@ const AddJoke = (props) => {
   };
   const handleSubmit = e => {
     e.preventDefault();
-    axios.post('https://5d6175f45f6487001406047a.mockapi.io/api/v1/joke', newJoke)
+    if(e.target.checkbox_both === "on") {e.target.checkbox_public = true; e.target.checkbox_private = true};
+    if(e.target.checkbox_public === "on") {e.target.checkbox_public = true};
+    if(e.target.checkbox_private === "on") {e.target.checkbox_private = true};
+    axios.post('https://dadjokes-be.herokuapp.com/api/jokes/addjoke', {setup: newJoke.setup, punchline: newJoke.punchline, public: 1, private: 1 })
       .then(response => {
         console.log(response);
-        axios.get('https://5d6175f45f6487001406047a.mockapi.io/api/v1/joke')
+        axios.get('https://dadjokes-be.herokuapp.com/api/jokes')
           .then(response => {
             console.log(response);
+            window.location.href='./profile';
           })
           .catch(error => {
-            console.log(error);
+            console.log(error.response);
           });
       })
-    window.location.href='./profile';
   };
 
   useEffect(() => {
     if(id !== null) {
-    axios.get('https://5d6175f45f6487001406047a.mockapi.io/api/v1/joke')
+    axios.get('https://dadjokes-be.herokuapp.com/api/jokes')
       .then(response => {
         const jokeInArr = response.data.find(joke => `${joke.id}` === id);
         setSetUpValue(jokeInArr.setup);
@@ -57,14 +60,14 @@ const AddJoke = (props) => {
 
   const handleEdit = e => {
     e.preventDefault();
-    axios.put(`https://5d6175f45f6487001406047a.mockapi.io/api/v1/joke/${placeHolderId}`, newJoke)
+    axios.put(`https://dadjokes-be.herokuapp.com/api/jokes/updatebyid/${placeHolderId}`, newJoke)
       .then(response => {
         console.log('post', response);
+        window.location.href='./profile';
       })
       .catch(error => {
         console.log('post error', error.response);
       });
-    window.location.href='./profile';
   };
 
   const handleCancel = e => {
@@ -77,9 +80,9 @@ const AddJoke = (props) => {
       <h3>Create a joke</h3>
       <div className="textAreaDiv">
         <div>Set up</div>
-        <textarea rows='4' cols='30' name='setup' value={setUpValue} onChange={e => handleChanges(e)} />
+        <textarea maxlength="100" rows='4' cols='30' name='setup' placeholder='Enter the setup of your joke. Must be 100 characters or less.' value={setUpValue} onChange={e => handleChanges(e)} />
         <div>Punchline</div>
-        <textarea rows='4' cols='30' name='punchline' value={punchlineValue} onChange={e => handleChanges(e)} />
+        <textarea maxlength="100" rows='4' cols='30' name='punchline' placeholder='Enter the punchline of your joke. Must be 100 characters or less.' value={punchlineValue} onChange={e => handleChanges(e)} />
       </div>
       <br />
       <br />

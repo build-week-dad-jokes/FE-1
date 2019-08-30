@@ -14,9 +14,10 @@ const SignUp = () => {
     e.preventDefault();
     if(newUser.password === newUser.confirm) {
       console.log(newUser);
-      axios.post('https://5d6175f45f6487001406047a.mockapi.io/api/v1/user', newUser)
+      axios.post('https://dadjokes-be.herokuapp.com/api/auth/register', {username: newUser.username, password: newUser.password})
         .then(response => {
           console.log(response);
+          window.location.href='./signin';
         })
         .catch(error => {
           console.log(error);

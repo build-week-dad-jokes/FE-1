@@ -7,20 +7,18 @@ import Navigation from "./components/Navigation";
 import AddJoke from "./components/AddJoke";
 import SignIn from "./components/SignIn";
 import SignUp from "./components/SignUp";
-import CardList from "./components/CardList";
-import Card from "./components/Card";
 import Profile from "./components/Profile";
+import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
   return (
     <Router>
       <div className="App">
         <Route path="/" component={Navigation} />
-        <Route exact path="/" component={CardList} />
         <Route path="/addjoke" component={AddJoke} />
         <Route path="/signin" component={SignIn} />
         <Route path="/signup" component={SignUp} />
-        <Route path="/profile" component={Profile} />
+        <PrivateRoute exact path="/profile" component={Profile} />
       </div>
     </Router>
   );
