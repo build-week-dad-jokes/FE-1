@@ -1,13 +1,14 @@
 .App {
   text-align: center;
   width: 500px;
-  height: 500px;
   margin-left: auto;
   margin-right: auto;
   overflow: hidden;
   overflow-x: auto;
   overflow-y: auto;
 }
+
+@media 
 
 .signInDiv {
   margin-top: 10px;
@@ -20,12 +21,13 @@
 /* homepage styling */
 
 .cardList {
-  margin-left: 100px;
   margin-top: 10px;
 }
 
 .jokeCard {
-  margin-bottom: 10px;
+  width: 262px;
+  margin: 0 auto 10px;
+  scale:
 }
 
 /* input styling */
@@ -176,10 +178,9 @@ header {
 
 .box {
   width: 300px;
-  margin-left: 100px;
-  margin-top: 10px;
   display: flex;
   flex-direction: column;
+  margin: 0 auto;
 }
 
 .editDelete {
